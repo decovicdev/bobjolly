@@ -1,0 +1,635 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta property="og:description" content="Send someone a silly birthday song!">
+        <meta name="twitter:image" content="https://bobjolly.com/images/opengraph.jpeg">
+        <meta property="og:type" content="website">
+        <meta property="og:title" content="Bob Jolly">
+        <meta property="og:url" content="https://bobjolly.com">
+        <meta property="theme-color" content="#000000">
+        <meta property="og:image" content="https://bobjolly.com/images/opengraph.jpeg">
+        <meta name="description" content="Send someone a silly birthday song!">
+        <meta name="twitter:description" content="Send someone a silly birthday song!">
+        <link rel="icon" type="image/jpeg" sizes="16x16" href="images/favicon.jpeg">
+        <title>Send Someone A Silly Birthday Music Video @ Just $11.95</title>
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link
+            href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;0,800;1,300;1,400;1,600;1,700;1,800&display=swap"
+            rel="stylesheet">
+        <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="slider/css/slider.css">
+        <link rel="stylesheet" type="text/css" href="css/jquery.remodal.css">
+        <link href="css/mobile-menu.css" rel="stylesheet">
+        <link href="css/aos.css" rel="stylesheet">
+
+
+        <script src="https://js.stripe.com/v3/"></script>
+
+
+
+        <!-- <script src="/js/checkout.js" data-rel-js></script> -->
+        <!-- <script src="/js/checkout.js" data-rel-js></script> -->
+
+        <link href="css/style.css" rel="stylesheet" type="text/css" />
+        <link rel="stylesheet" type="text/css" href="/css/checkout.css" data-rel-css="">
+
+        <!-- Facebook Pixel Code and domain verification-->
+        <meta name="facebook-domain-verification" content="qayqd41i2h75teyy1qi6aet3ic1m17" />
+        <!--FB domain verification-->
+        <script>
+            !function (f, b, e, v, n, t, s) {
+                if (f.fbq) return; n = f.fbq = function () {
+                    n.callMethod ?
+                    n.callMethod.apply(n, arguments) : n.queue.push(arguments)
+                };
+                if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = '2.0';
+                n.queue = []; t = b.createElement(e); t.async = !0;
+                t.src = v; s = b.getElementsByTagName(e)[0];
+                s.parentNode.insertBefore(t, s)
+            }(window, document, 'script',
+                'https://connect.facebook.net/en_US/fbevents.js');
+            fbq('init', '143022007863352');
+            fbq('track', 'PageView');
+        </script>
+        <noscript><img height="1" width="1" style="display:none"
+                src="https://www.facebook.com/tr?id=143022007863352&ev=PageView&noscript=1" /></noscript>
+        <!-- End Facebook Pixel Code -->
+
+
+    </head>
+    <style type="text/css">
+        .is-invalid {
+            border: 2px solid #ff0000 !important;
+            /* border-color: #ff0000 !important;*/
+        }
+
+        .errorText {
+            display: none !important;
+        }
+
+        .text-danger {
+            color: #efff00 !important;
+        }
+    </style>
+
+    <body class="theme-default">
+
+        <div id="container-box">
+            <div class="top-section">
+                <div class="container">
+                    <div class="top-bar">
+                        <div class="top-left"><a href="#"><img src="images/logo.png" /></a></div>
+                        <div class="top-right">
+                            <div class="top-text">Personalized Whacky Birthday Music Videos</div>
+                            <div class="top-btn">
+                                <a href="#booknow" class="smooth-scroll">Book Now</a>
+                                <a href="contact.html">Contact</a>
+                            </div>
+                        </div>
+                        <div class="clr"></div>
+                    </div>
+                    <div class="top-banner">
+                        <div class="banner-text">
+                            <h1>Send someone a <span>Personalized Birthday Music Video @ Just
+                                    $11.95</span></h1>
+                            <br />
+                            <h1>AND GET ONE <span>FREE!</span></h1>
+                            <h2>Delivery within 24 hours</h2>
+
+                            <div class="button-box">
+                                <a href="#samplevideo" onclick="startYtvideo()">Sample Video</a>
+                                <a href="#booknow" class="violet">Book Now</a>
+
+                            </div>
+                        </div>
+                        <div class="banner-video">
+                            <iframe width="100%" height="340"
+                                src="https://www.youtube.com/embed/1Wwu1nD4uzs?rel=0"
+                                title="YouTube video player" frameborder="0"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="center-section">
+                <div class="container">
+                    <div class="testomonial-box">
+                        <div class="testi-slider" id="testi-slider">
+                            <div class="tetsi-item">
+                                <p>Delivered it, same day and it was exactly what I wanted, and even
+                                    threw in a second version, for free! Will be working with him in
+                                    the future again.</p>
+                                <div class="test-name"><span>Erin Wade,</span> United States</div>
+                            </div>
+                            <div class="tetsi-item">
+                                <p>Amazing! Funniest video! Great service, the product has arrived
+                                    faster than expected and was exactly what I wanted it to be.
+                                    Highly recommended!</p>
+                                <div class="test-name"><span>Gil Chirurg,</span> Israel</div>
+                            </div>
+                            <div class="tetsi-item">
+                                <p>Awful! Absolutely Awful! What a ghastly sence of humor. Can't
+                                    believe I paid 12 bucks for this s#$%</p>
+                                <div class="test-name"><span>Captain America,</span> Spain</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="gift-section" id="booknow">
+                <div class="container">
+                    <div class="title-box">
+                        <h1>Funny Birthday Music Video</span></h1>
+                        <h2>It's just $11.95. Delivery within 24 hours!<br>Place your order now.
+                        </h2>
+                    </div>
+                    <form onsubmit="(e) => e.preventDefault()" class="gift-form-box birthdayForm" method="post">
+                        <div class="gift-form-img">
+                            <div class="form-item">
+                                <div class="form-field">
+                                    <div class="field-item">
+                                        <h4>Who is the birthday person?</h4>
+                                        <input class="birthdayPersonInput white_bar" type="text"
+                                        onchange="checkFields()"
+                                            name="birthdayPersonName"
+                                            placeholder="Birthday Person's Name"
+                                            style="padding-top: 6px;margin-top: 10px;" required>
+                                        <small class="form-text text-danger errorText">Please enter
+                                            their name.</small>
+                                    </div>
+
+
+                                    <div class="field-item ">
+                                        <h4>Gender</h4>
+                                        <select class="white_bar"
+                                        onchange="checkFields()"
+                                        name="birthdayPersonGender"
+                                            style="padding-top: 6px;margin-top: 10px;" required>
+                                            <option value="Male" selected="">Male</option>
+                                            <option value="Female">Female</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-item" >
+                                <div class="form-field">
+                                    <div class="field-item">
+                                        <h4>Do you want Bob to mention their age? (Recommended)</h4>
+                                        <ul class="check-list">
+                                            <li>
+                                                <label>
+                                                    <input type="radio"
+                                                    onchange="checkFields()"
+                                                    class="consentYes"
+                                                        id="consentYes" name="consent" value="0"
+                                                        checked="">
+                                                    <span>Yes</span>
+                                                </label>
+                                            </li>
+                                            <li>
+                                                <label>
+                                                    <input type="radio"
+                                                    onchange="checkFields()"
+                                                    class="consentNo"
+                                                        id="consentNo" name="consent" value="1">
+                                                    <span>No</span>
+                                                </label>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="field-item birthdayDetailsRow">
+                                        <input class="white_bar dateInput" onchange="checkFields()" type="hidden"
+                                            min="1900-01-01" name="birthdayDate1" value="2000-01-01"
+                                            required />
+                                        <h4>Age</h4>
+                                        <input type="text" onchange="checkFields()" class="white_bar ageInput"
+                                            name="birthdayDate" required="" /><span
+                                            class="ageText"></span>
+                                        <small class="form-text text-danger errorText">Please enter
+                                            their age.</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="form-item">
+                            <h4>Selected Quality</h4>
+                            <div class="form-field full-width">
+                                <ul class="check-list" id="quality-list">
+                                    <li>
+                                        <label>
+                                            <input onchange="checkFields()" type="radio" name="quality" value="0"
+                                                checked=""><span>Loves Animals</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input onchange="checkFields()" type="radio" name="quality" value="1"><span>Loves
+                                                Power</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input onchange="checkFields()" type="radio" name="quality" value="2"><span>Is
+                                                Funny</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input onchange="checkFields()" type="radio" name="quality" value="3"><span>Loves
+                                                (or Hates) Surprises</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input onchange="checkFields()" type="radio" name="quality" value="4"><span>Loves
+                                                Kids</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input onchange="checkFields()" type="radio" name="quality" value="5"><span>Is
+                                                Optimistic</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input onchange="checkFields()" type="radio" name="quality" value="6"><span>Is
+                                                Creative</span>
+                                        </label>
+                                    </li>
+                                    <li>
+                                        <label>
+                                            <input onchange="checkFields()" type="radio" name="quality" value="7"><span>Is
+                                                Good At Multitasking</span>
+                                        </label>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+
+<!-- Client Details -->
+
+
+                        <div class="form-item agreement">
+                            <div class="form-item">
+                                <!-- <h4>Clinet Details</h4> -->
+                                <div class="form-field" id="client-details">
+                                    <div class="field-item" >
+                                        <h6 class="color-white">Whats your name?</h6>
+                                        <input class="birthdayPersonInput white_bar" type="text"
+                                            onchange="checkFields()"
+                                            name="name"
+                                            placeholder="Your name"
+                                            style="padding-top: 6px;margin-top: 10px;" required>
+                                        <small class="form-text text-danger errorText">Please enter
+                                            the name.</small>
+                                    </div>
+                                    <div  class="field-item" >
+                                        <h6 class="color-white">Your email?</h6>
+                                        <input class="birthdayPersonInput white_bar" type="email"
+                                        onchange="checkFields()"
+                                            name="email"
+                                            placeholder="your@email.com"
+                                            style="padding-top: 6px;margin-top: 10px;" required>
+                                        <small class="form-text text-danger errorText">Please enter
+                                            your email.</small>
+                                    </div>
+                                    <div  class="field-item" >
+                                        <h6 class="color-white">Confirm your email?</h6>
+                                        <input class="birthdayPersonInput white_bar" type="email"
+                                        onchange="checkFields()"
+                                            name="confirmEmail"
+                                            placeholder="your@email.com"
+                                            style="padding-top: 6px;margin-top: 10px;" required>
+                                        <small class="form-text text-danger errorText">Confirm enter
+                                            your email.</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-field full-width agreement">
+                                <label>
+                                    <input onchange="checkFields()" type="checkbox" class="agreementBox">
+                                    <span>
+                                        By ticking this box, I agree to the bloody <a
+                                            href="/User%20Agreement.pdf" target="_blank"
+                                            style="color:#fff; font-weight: 600;">User
+                                            Agreement</a>.
+                                        <br />
+                                        You also agree that your payment details will be used for
+                                        communications between you and Bob Jolly.
+                                    </span>
+                                </label><br>
+                                <small class="text-danger errorText">You must agree to the terms
+                                    outlined in the User Agreement.</small>
+                            </div>
+                        </div>
+                        <!-- <div class="form-item">
+                    <div class="form-field full-width text-center">
+                        <input type="submit" value="Paypal" />
+                        <input type="submit" class="debit-btn" value="Debit or Credit Card" />
+                    </div>
+                </div> -->
+
+</form>
+                        <!-- Payment gateway render -->
+
+                        <div class="form-group" style="width: 50%;
+                        margin: 0 auto;">
+                            <!-- <center>
+                                <div id="paypal-button-container" style="display: none"></div>
+                            </center> -->
+
+
+                            <!-- Stripe pg -->
+
+                            <div style="background-color: #fff; padding: 10px; border-radius: 10px;">
+
+                            <form id="payment-form">
+                                <!-- <label for="name">
+                                    Name
+                                </label>
+                                <input id="name" placeholder="Jenny Rosen" value="Jenny Rosen"
+                                    required /> -->
+
+
+
+
+                                <div id="card-element">
+                                    <!-- Elements will create input elements here -->
+                                </div>
+
+                                <!-- We'll put the error messages in this element -->
+                                <div id="card-errors" role="alert"></div>
+
+                                <button id="checkout-btn" class="btn btn-primary" style="padding: 0;" id="submit">Pay Now</button>
+                            </form>
+                        </div>
+                            <!-- bob -->
+
+                            <!-- Payment Gateways -->
+                            <script
+                                src="https://www.paypal.com/sdk/js?client-id=Acjr-k88ok0I3PhNwpWqOJFinrbTYffqX4PGWt07-fZur8RDxNeQ9tCklKJdJTmUkUIdkrrdGGYRtAeE&currency=USD&disable-funding=credit&merchant-id=ANV4VG5CAGPFQ"></script>
+
+
+                            <script src="js/jquery-1.11.1.min.js" type="text/javascript"></script>
+                            <script src="slider/js/owl.carousel.js" type="text/javascript"></script>
+                            <!--<script  src="js/hc-offcanvas-nav.js" type="text/javascript" ></script>-->
+                            <script src="js/aos.js"></script>
+
+
+                            <script src="js/jquery.remodal.js"></script>
+                            <script src="js/bootstrap.jo.js"></script>
+                            <script src="js/formValidation.js"></script>
+                            <script src="js/main.js" type="text/javascript"></script>
+                            <!-- <script>
+    paypal.Buttons({
+            style: {
+                layout: 'vertical',
+                tagline: false,
+                size: 'responsive'
+            },
+            onInit: function (data, actions) {
+                initValidation(data, actions);
+            },
+            onClick: function () {
+                let errorsPresent = false;
+                const inputs = document.querySelectorAll(".nameInput, .emailInput, .birthdayPersonInput, .ageInput, .agreementBox");
+                for (let i = 0; i < inputs.length; i++) {
+                    const result = checkInputValid(inputs[i]);
+                    if (!result) errorsPresent = true;
+                }
+                if (errorsPresent) return false;
+                return true;
+            },
+            createOrder: function (data, actions) {
+                return fetch(`${API_URL}/v1/paypal/createOrder`, {
+                    method: 'post'
+                }).then(function (res) {
+                    return res.json();
+                }).then(function (orderData) {
+                    return orderData.id;
+                });
+            },
+            onApprove: function (data, actions) {
+                showLoadingModal(true);
+                return fetch(`${API_URL}/v1/paypal/order/${data.orderID}/capture`, {
+                    method: 'post'
+                }).then(function (res) {
+                    return res.json();
+                }).then(function (orderData) {
+                    // const errorDetail = Array.isArray(orderData.details) && orderData.details[0];
+                    // if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
+                    //     return actions.restart();
+                    // }
+                    console.log("orderData ----");
+                    console.log(orderData);
+                    if(isJson(orderData)) {
+                        var newData = JSON.parse(orderData); //orderData;
+                        console.log("orderData is Json");
+                    }
+                    else {
+                        var newData = orderData;
+                        console.log("orderData is Not Json");
+                    }
+                    // var newData = JSON.parse(orderData);
+                    // var jjj = jj.details[0]['issue'];
+                    var errorDetail = Array.isArray(newData.details) && newData.details[0];
+                    console.log("errorDetail = "+errorDetail);
+                    if (errorDetail && errorDetail.issue === 'INSTRUMENT_DECLINED') {
+                        showLoadingModal(false);
+                        console.log("In error1 ----");
+                        return actions.restart(); // Recoverable state, per:
+                        // https://developer.paypal.com/docs/checkout/integration-features/funding-failure/
+                    }
+                    // if (newData.error === 'INSTRUMENT_DECLINED') { //new
+                    //     console.log("In error2 ----");
+                    //     return actions.restart();
+                    // }
+                    var errorDetail = Array.isArray(orderData.details) && orderData.details[0];
+                    if (errorDetail) {
+                        console.log("In error3 ----");
+                        showLoadingModal(false);
+                        let msg = "We're sorry, but we couldn't complete your order. Please contact us at <a href='mailto: support@bobjolly.com'>support@bobjolly.com</a> with these details.";
+                        if (errorDetail.description) msg += '<br /><br />' + errorDetail.description;
+                        if (orderData.debug_id) msg += ' (' + orderData.debug_id + ')';
+                        return showModal("Error processing transaction", msg); // Show a failure message
+                    }
+                    const form = document.getElementsByClassName("birthdayForm")[0];
+                    const formData = new FormData(form);
+                    const formObj = Object.fromEntries(formData);
+                    formObj.name = orderData.payer.name.given_name + ' ' + orderData.payer.name.surname;
+                    formObj.email = orderData.payer.email_address;
+                    formObj.orderID = orderData.id;
+                    let age = "Unknown";
+                    console.log(formObj.consent);
+                    if (formObj.consent === "1") {
+                        formObj.birthdayDate = "No consent given";
+                        console.log(formObj.birthdayDate);
+                    } else if (formObj.consent === "0") {
+                        age = formObj.birthdayDate; //calculateAge(formObj.birthdayDate);
+                    }
+                    const data = JSON.stringify(formObj);
+                    fetch(`${API_URL}/v1/form/receive`,
+                        {
+                            method: 'post',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: data,
+                        }).then((res) => res.json()).then((res) => {
+                            showLoadingModal(false);
+                            if (!res.success) return showModal(
+                                "Error processing order",
+                                `There was an error processing your order.
+                                Contact us at <a href="mailto:support@bobjolly.com">support@bobjolly.com</a> regarding your order and we'll figure out what went wrong.`)
+                            let msg = `Your order was successfully processed!
+                            Order details have been sent to your email.
+                            Expect a response from Bob Jolly himself within the next 24 hours confirming your order is being processed.
+                            Should you have any questions, feel free to contact him in advance at <a href='mailto:support@bobjolly.com'>support@bobjolly.com.</a><br /><br />`;
+                            msg += `<span><b>Name:</b> ${formObj.name}</span><br />`;
+                            msg += `<span><b>Email:</b> ${formObj.email}</span><br />`;
+                            msg += `<span><b>Birthday Person Name:</b> ${formObj.birthdayPersonName}</span><br />`;
+                            msg += `<span><b>Birthday Person Age:</b> ${age}</span><br />`;
+                            msg += `<span><b>Birthday Person Gender:</b> ${formObj.birthdayPersonGender}</span><br />`;
+                            msg += `<span><b>Birthday Person Quality:</b> ${birthdayQualityMap[formObj.quality]}</span><br />`;
+                            const formattedDate = new Date().toLocaleDateString();
+                            const formattedTime = new Date().toLocaleTimeString();
+                            msg += `<span><b>Submitted:</b> ${formattedDate} ${formattedTime}</span><br />`;
+                            msg += `<span><b>PayPal Order ID:</b> ${orderData.id}</span><br />`;
+                            //FB purchase tracker fbq('track', 'Purchase', {currency: "USD", value: 11.95});
+                            return showModal(`Order #${orderData.id} completed!`, msg);
+                        });
+                });
+            },
+            onError: function (err) {
+                console.error(err);
+            }
+        }).render('#paypal-button-container').then(function () {
+            document.getElementById("paypal-button-container").style.display = "block";
+            document.getElementById("paypal-button-container").classList.add("button-loaded");
+        });
+
+        //new j start
+        function isJson(str) {
+            try {
+                JSON.parse(str);
+            } catch (e) {
+                return false;
+            }
+            return true;
+        }
+        //new j end
+</script> -->
+
+
+                            <!--  -->
+                        </div>
+
+
+                </div>
+            </div>
+        </div>
+        <div class="footer-section row d-inline">
+            <div class="col-md-8 pl-5">
+                Copyright ©
+                <script>document.write(new Date().getFullYear())</script> Bob Jolly. All rights
+                reserved. <a href="privacy-policy.html">Privacy Policy</a>
+            </div>
+            <div class="col-md-4 text-center" style="padding-right: 2em;">
+                <a href="https://www.youtube.com/channel/UCFYSZWeyE6_aNfCZbTCFeGQ"
+                    style="padding-right: 0.4em;" target="_blank"><i
+                        class="fa fa-youtube-play"></i></a>
+                <a href="https://www.facebook.com/Bob-Jolly-1116732775008161"
+                    style="padding-right: 0.4em;" target="_blank"><i class="fa fa-facebook"></i></a>
+                <a href="https://www.instagram.com/bobdangerjolly/" style="padding-right: 0.4em;"
+                    target="_blank"><i class="fa fa-instagram"></i></a>
+            </div>
+        </div>
+        <!--Contact-->
+        <div class="remodal contact-popup sample-popup" id="scModal" data-remodal-id="samplevideo">
+            <h3>Sample Video</h3>
+            <iframe class="youtube-video" width="100%" height="440"
+                src="https://www.youtube.com/embed/FyB6oO4t2Yw?rel=0&enablejsapi=1&version=3&playerapiid=ytplayer"
+                title="YouTube video player" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </div>
+        <!--Contact-->
+        <!-- new modal -->
+        <div class="modal fade loading-modal" role="dialog" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <center><i class="fa fa-spinner fa-3x fa-spin"></i></center>
+                </div>
+            </div>
+        </div>
+        <!-- <div class="modal fade order-modal" role="dialog" tabindex="-1">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modalTitle">What's happened here??</h5><button type="button" class="close modalBtn" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+                </div>
+                <div class="modal-body">
+                    <p class="text-left" id="modalParagraph">If you get this message, don't fret. <br>Contact us at&nbsp;<a href="mailto:support@bobjolly.com">support@bobjolly.com</a>, tell us what you did and we'll help you figure out the problem.</p>
+                </div>
+            </div>
+        </div>
+    </div> -->
+        <div class="modal fade order-modal" role="dialog" tabindex="-1">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header"
+                        style="background-image: url(images/gift-pattern.jpg);">
+                        <button type="button" class="close modalBtn" data-dismiss="modal"
+                            aria-label="Close"><span aria-hidden="true"
+                                style="color:#fff; font-size:1.3em;">x</span></button>
+                        <h5 class="modal-title" id="modalTitle" style="color:#fff;">What's happened
+                            here??</h5>
+                    </div>
+                    <div class="modal-body">
+                        <p class="text-left" id="modalParagraph">If you get this message, don't
+                            fret. <br>Contact us at&nbsp;<a
+                                href="mailto:support@bobjolly.com">support@bobjolly.com</a>, tell us
+                            what you did and we'll help you figure out the problem.</p>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="button-box text-center">
+                            <a href="#" onclick="location.reload();" data-dismiss="modal" aria-label="Close">Close</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- new modal end -->
+        </div>
+
+
+
+
+
+
+
+        <script type="text/javascript">
+            function startYtvideo() {
+                $('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'playVideo' + '","args":""}', '*');
+            }
+            function stopYtvideo() {
+                $('.youtube-video')[0].contentWindow.postMessage('{"event":"command","func":"' + 'stopVideo' + '","args":""}', '*');
+            }
+            $(document).on('closed', '.remodal', function (e) {
+                stopYtvideo();
+            });
+        </script>
+
+    </body>
+
+    <script src="js/checkout.js"    ></script>
+
+</html>
