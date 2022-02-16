@@ -12,6 +12,8 @@ import stripe from "../config/stripe";
 import Loading from "../components/shared/Loading";
 import Script from "next/script";
 
+//https://youtu.be/QAdtc7VWuNE?t=162 GOOGLE ANALYTICS INSTALLATION
+
 function MyApp({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
 
@@ -26,7 +28,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Bobjolly</title>
       </Head>
 
-      <Script //https://youtu.be/QAdtc7VWuNE?t=162 GOOGLE ANALYTICS INSTALLATION
+      <Script
         strategy="lazyOnload"
         src={`https://www.googletagmanager.com/gtag/js?id=${process.env.GOOGLE_ANALYTICS_ID}`}
       />
