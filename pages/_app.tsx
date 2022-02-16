@@ -28,11 +28,11 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Bobjolly</title>
 
         {/* Global Site Tag (gtag.js) - Google Analytics */}
-        <script
+        <Script
           async
           src={`https://www.googletagmanager.com/gtag/js?id=G-WHZ6P0WJMJ`}
         />
-        <script
+        <Script
           dangerouslySetInnerHTML={{
             __html: `
             window.dataLayer = window.dataLayer || [];
