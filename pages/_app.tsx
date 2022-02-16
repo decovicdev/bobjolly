@@ -26,20 +26,25 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Bobjolly</title>
+
+        {/* Global Site Tag (gtag.js) - Google Analytics */}
+        <script
+          async
+          src={`https://www.googletagmanager.com/gtag/js?id=G-WHZ6P0WJMJ`}
+        />
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', 'G-WHZ6P0WJMJ', {
+              page_path: window.location.pathname,
+            });
+          `,
+          }}
+        />
       </Head>
-
-      <Script
-        strategy="lazyOnload"
-        src={`https://www.googletagmanager.com/gtag/js?id=G-WHZ6P0WJMJ`}
-      />
-
-      <Script strategy="lazyOnload">
-        {`window.dataLayer = window.dataLayer || [];
-          function gtag(){dataLayer.push(arguments);}
-          gtag('js', new Date());
-          
-          gtag('config', 'G-WHZ6P0WJMJ');`}
-      </Script>
 
       {isLoading ? (
         <Loading />
