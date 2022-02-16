@@ -28,6 +28,19 @@ function MyApp({ Component, pageProps }: AppProps) {
         <title>Bobjolly</title>
       </Head>
 
+      <Script
+        strategy="lazyOnload"
+        src={`https://www.googletagmanager.com/gtag/js?id=G-WHZ6P0WJMJ`}
+      />
+
+      <Script strategy="lazyOnload">
+        {`window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+          
+          gtag('config', 'G-WHZ6P0WJMJ');`}
+      </Script>
+
       {isLoading ? (
         <Loading />
       ) : (
