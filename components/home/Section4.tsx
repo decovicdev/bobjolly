@@ -1,7 +1,7 @@
-import React from 'react';
+import React from "react";
 
-import styles from '../../styles/Home.module.scss';
-import StripeContainer from '../StripeContainer';
+import styles from "../../styles/Home.module.scss";
+import StripeContainer from "../StripeContainer";
 
 interface Section4Props {
   isMobile: boolean;
@@ -10,7 +10,7 @@ interface Section4Props {
 const Section4: React.FC<Section4Props> = (props) => {
   const { isMobile } = props;
   return (
-    <div className={styles.giftSection} id='booknow'>
+    <div className={styles.giftSection} id="booknow">
       <div className={styles.container}>
         <div className={styles.titleBox}>
           <h1>Funny Birthday Music Video</h1>
@@ -18,17 +18,17 @@ const Section4: React.FC<Section4Props> = (props) => {
           <h2>
             It's just $11.95. Delivery within 24 hours!
             <br />
-            Place your order now.
+            Place your order now!
           </h2>
         </div>
-        <div className={styles.giftFormBox + ' ' + styles.birthdayForm}>
+        <div className={styles.giftFormBox + " " + styles.birthdayForm}>
           <div
             className={styles.giftFormImg}
-            style={isMobile ? { width: '100%' } : { width: '70%' }}
+            style={isMobile ? { width: "100%" } : { width: "70%" }}
           >
             <div
-              className={'app'}
-              style={isMobile ? { width: '100%' } : { width: '70%' }}
+              className={"app"}
+              style={isMobile ? { width: "100%" } : { width: "70%" }}
             >
               <StripeContainer />
             </div>
