@@ -37,7 +37,7 @@ const Section2: React.FC<Section2Props> = (props) => {
             color='#000'
           >
             <SubHeading color='#fff' textAlign='center' my='4'>
-              Place your order now.
+              Place your order now!
             </SubHeading>
 
             {<BookingForm />}

@@ -25,6 +25,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name='viewport' content='width=device-width, initial-scale=1' />
         <title>Bobjolly</title>
       </Head>
+
       {isLoading ? (
         <Loading />
       ) : (
