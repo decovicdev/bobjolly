@@ -7,6 +7,7 @@ import Section2 from '../components/home/Section2';
 import DisclaimerModal from '../components/DisclaimerModal';
 import SampleVideoModal from '../components/SampleVideoModal';
 import { useModalContext } from '../hooks/useContext';
+import FloatingWhatsApp from '../components/FloatingWhatsApp';
 
 const Home: NextPage = (props) => {
   const {
@@ -29,6 +30,7 @@ const Home: NextPage = (props) => {
       <Hero />
       <Section1 />
       <Section2 />
+      <FloatingWhatsApp />
     </Box>
   );
 };

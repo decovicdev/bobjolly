@@ -19,14 +19,16 @@ const DisclaimerModal: React.FC<DisclaimerModalProps> = (props) => {
       scrollBehavior='inside'
       header={disclaimer.title}
       body={
-        <Box>
+        <VStack>
+          <Title>{disclaimer.title}</Title>
+          <Body1>{disclaimer.description}</Body1>
           {disclaimer.sections.map((section, index) => (
             <VStack key={index} align='flex-start' mb='8'>
               <Title fontWeight='medium'>{section.title}</Title>
               <Body1>{section.description}</Body1>
             </VStack>
           ))}
-        </Box>
+        </VStack>
       }
     />
   );
