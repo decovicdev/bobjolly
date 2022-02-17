@@ -6,11 +6,14 @@ import { ChakraProvider } from '@chakra-ui/react';
 import { Elements } from '@stripe/react-stripe-js';
 import Head from 'next/head';
 
-import Layout from '../components/shared/Layout';
-import theme from '../config/theme';
-import stripe from '../config/stripe';
-import Loading from '../components/shared/Loading';
+import Layout from "../components/shared/Layout";
+import theme from "../config/theme";
+import stripe from "../config/stripe";
+import Loading from "../components/shared/Loading";
+import { useRouter } from "next/router";
 import { ModalProvider } from '../context/ModalContext';
+
+//https://youtu.be/QAdtc7VWuNE?t=162 GOOGLE ANALYTICS INSTALLATION
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
@@ -18,6 +21,8 @@ function MyApp({ Component, pageProps }: AppProps) {
   useEffect(() => {
     setIsLoading(false);
   }, []);
+
+  const router = useRouter();
 
   return (
     <>
