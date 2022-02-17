@@ -9,6 +9,7 @@ import ContactForm, {
   HandleSubmit,
 } from '../components/ConntactForm';
 import Head from 'next/head';
+import FloatingWhatsApp from '../components/FloatingWhatsApp';
 
 type Data = {
   status: string;
@@ -39,7 +40,7 @@ const Contact: NextPage = (props) => {
       .then((data) => {
         if (data.status === 'succ') {
           setSucc(data.message);
-          actions.resetForm();
+          // actions.resetForm();
         }
         if (data.status === 'err') {
           setErr(data.message);
@@ -87,6 +88,7 @@ const Contact: NextPage = (props) => {
         </Body1>
         <ContactForm handleSubmit={handleSubmit} />
       </Box>
+      <FloatingWhatsApp />
     </Container>
   );
 };
