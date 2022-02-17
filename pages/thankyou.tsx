@@ -6,14 +6,17 @@ import ReactConfetti from "react-confetti";
 import ButtonPrimary from "../components/shared/button/ButtonPrimary";
 import { Body1 } from "../components/shared/typography";
 import useScreenSize from "../hooks/useScreenSize";
-import facebookPixel from "react-facebook-pixel";
 import { useEffect } from "react";
 
 interface ThankyouProps {}
 
 const Thankyou: NextPage<ThankyouProps> = (props) => {
   useEffect(() => {
-    facebookPixel.track("Purchase", { value: 11.95, currency: "USD" });
+    import("react-facebook-pixel")
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.track("Purchase", { value: 11.95, currency: "USD" });
+      });
   }, []);
 
   const router = useRouter();
