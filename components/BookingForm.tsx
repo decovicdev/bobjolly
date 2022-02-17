@@ -1,80 +1,81 @@
-import { Box, FormLabel, Spinner, useToast } from "@chakra-ui/react";
-import { CardElement, useElements, useStripe } from "@stripe/react-stripe-js";
-import { FormikHelpers } from "formik";
-import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
-import { boolean, number, object, ref, string } from "yup";
-import formatBooleanToString from "../../utils/formatBooleanToString";
+import { Box, Button, useToast } from '@chakra-ui/react';
+import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
+import { FormikHelpers } from 'formik';
+import { useRouter } from 'next/router';
+import { useEffect, useState } from 'react';
+import { boolean, number, object, ref, string } from 'yup';
+import { useModalContext } from '../hooks/useContext';
+import formatBooleanToString from '../utils/formatBooleanToString';
 
-import { FormikStep, FormikStepper } from "../shared/FormikStepper";
-import CheckBoxControl from "../shared/input/CheckBoxControl";
-import FormControl from "../shared/input/FormControl";
-import GenderControl from "../shared/input/GenderControl";
-import InputControl from "../shared/input/InputControl";
-import RadioControl from "../shared/input/RadioControl";
+import { FormikStep, FormikStepper } from './shared/FormikStepper';
+import CheckBoxControl from './shared/input/CheckBoxControl';
+import FormControl from './shared/input/FormControl';
+import GenderControl from './shared/input/GenderControl';
+import InputControl from './shared/input/InputControl';
+import RadioControl from './shared/input/RadioControl';
 
 const qualityOptions = [
-  "Loves Animals",
-  "Loves Kids",
-  "Loves Powers",
-  "Loves (Or Hates) Surprises",
-  "Good At Multitasking",
-  "Funny",
-  "Creative",
-  "Optimistic",
+  'Loves Animals',
+  'Loves Kids',
+  'Loves Powers',
+  'Loves (Or Hates) Surprises',
+  'Good At Multitasking',
+  'Funny',
+  'Creative',
+  'Optimistic',
 ];
-const genderOption = ["He", "She"];
+const genderOption = ['He', 'She'];
 
 const bdPersonSchema = object({
-  bdPersonName: string().required("Birthday Person Name is required"),
+  bdPersonName: string().required('Birthday Person Name is required'),
   bdPersonGender: string().oneOf(genderOption).required(),
-  bdPersonAge: number().required("Birthday Person Age is required"),
+  bdPersonAge: number().required('Birthday Person Age is required'),
   bdPersonQuality: string().oneOf(qualityOptions).required(),
   bdPersonMentionAge: boolean().required(),
 });
 
 const bookingPersonSchema = object({
-  bookingPersonName: string().required("Name is required"),
+  bookingPersonName: string().required('Name is required'),
   bookingPersonEmail: string()
-    .email("Email is not a valid email")
-    .required("Email is required"),
+    .email('Email is not a valid email')
+    .required('Email is required'),
   bookingPersonEmailConfirm: string()
-    .oneOf([ref("bookingPersonEmail"), null], "Emails don't match")
-    .required("Email confirmation is required"),
+    .oneOf([ref('bookingPersonEmail'), null], "Emails don't match")
+    .required('Email confirmation is required'),
   bookingPersonAgree: boolean()
-    .is([true], "You must agree to the terms and conditions")
+    .is([true], 'Please check user agreement')
     .required(),
 });
 
 const initialValues = {
-  bdPersonName: "",
-  bdPersonAge: "",
+  bdPersonName: '',
+  bdPersonAge: '',
   bdPersonGender: genderOption[0],
   bdPersonQuality: qualityOptions[0],
   bdPersonMentionAge: true,
-  bookingPersonName: "",
-  bookingPersonEmail: "",
-  bookingPersonEmailConfirm: "",
+  bookingPersonName: '',
+  bookingPersonEmail: '',
+  bookingPersonEmailConfirm: '',
   bookingPersonAgree: false,
 };
 
 const cardOptions = {
   hidePostalCode: true,
   classes: {
-    base: "form-control",
-    complete: "form-control",
-    empty: "form-control",
+    base: 'form-control',
+    complete: 'form-control',
+    empty: 'form-control',
   },
   style: {
     base: {
-      backgroundColor: "#fff",
-      fontSize: "18px",
-      "::placeholder": {
-        color: "#aab7c4",
+      backgroundColor: '#fff',
+      fontSize: '18px',
+      '::placeholder': {
+        color: '#aab7c4',
       },
     },
     invalid: {
-      color: "#9e2146",
+      color: '#9e2146',
     },
   },
 };
@@ -89,12 +90,13 @@ export type HandleSubmit = (
 interface BookingFormProps {}
 
 const BookingForm: React.FC<BookingFormProps> = (props) => {
-  const [error, setError] = useState("");
-  const [cardError, setCardError] = useState("");
+  const [error, setError] = useState('');
+  const [cardError, setCardError] = useState('');
   const stripe = useStripe();
   const elements = useElements();
   const toast = useToast();
   const router = useRouter();
+  const { onDisclaimerModalOpen } = useModalContext();
 
   const handleSubmit: HandleSubmit = async (values, actions) => {
     if (!stripe || !elements || cardError) {
@@ -102,11 +104,11 @@ const BookingForm: React.FC<BookingFormProps> = (props) => {
     }
 
     const { error: backendError, clientSecret } = await fetch(
-      "/api/create-payment",
+      '/api/create-payment',
       {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify(formatBooleanToString(values)),
       }
@@ -115,7 +117,6 @@ const BookingForm: React.FC<BookingFormProps> = (props) => {
     if (backendError) {
       setError(backendError.message);
     } else {
-      
       const cardElement = elements.getElement(CardElement)!;
       const { error } = await stripe.confirmCardPayment(clientSecret, {
         payment_method: {
@@ -132,7 +133,7 @@ const BookingForm: React.FC<BookingFormProps> = (props) => {
         setError(error?.message!);
       } else {
         router.push({
-          pathname: "thankyou",
+          pathname: 'thankyou',
           query: {
             n: values.bookingPersonName,
           },
@@ -147,7 +148,7 @@ const BookingForm: React.FC<BookingFormProps> = (props) => {
   useEffect(() => {
     if (error) {
       toast({
-        status: "error",
+        status: 'error',
         title: error,
       });
     }
@@ -158,29 +159,29 @@ const BookingForm: React.FC<BookingFormProps> = (props) => {
       <FormikStep validationSchema={bdPersonSchema}>
         <InputControl
           isRequired
-          size="lg"
-          name="bdPersonName"
+          size='lg'
+          name='bdPersonName'
           label="Birthday Person's Name"
           placeholder="Enter Birthday Person's Name"
         />
         <InputControl
           isRequired
-          size="lg"
-          name="bdPersonAge"
-          type="number"
+          size='lg'
+          name='bdPersonAge'
+          type='number'
           label="Birthday Person's Age"
           placeholder="Enter Birthday Person's Age"
         />
-        <CheckBoxControl colorScheme="red" name="bdPersonMentionAge" size="lg">
+        <CheckBoxControl colorScheme='red' name='bdPersonMentionAge' size='lg'>
           It's ok to mention the birthday person's age (recommended)
         </CheckBoxControl>
-        <GenderControl name="bdPersonGender" />
+        <GenderControl name='bdPersonGender' />
 
         <RadioControl
-          name="bdPersonQuality"
+          name='bdPersonQuality'
           label="Birthday Person's Selected Quality:"
-          colorScheme="red"
-          size="lg"
+          colorScheme='red'
+          size='lg'
           options={qualityOptions.map((option) => ({
             label: option,
             value: option,
@@ -190,46 +191,52 @@ const BookingForm: React.FC<BookingFormProps> = (props) => {
       <FormikStep validationSchema={bookingPersonSchema}>
         <InputControl
           isRequired
-          size="lg"
-          name="bookingPersonName"
-          label="Your Name"
-          placeholder="Enter Your Name"
+          size='lg'
+          name='bookingPersonName'
+          label='Your Name'
+          placeholder='Enter Your Name'
         />
         <InputControl
           isRequired
-          size="lg"
-          name="bookingPersonEmail"
-          type="email"
-          label="Your Email"
-          placeholder="Enter Your Email"
+          size='lg'
+          name='bookingPersonEmail'
+          type='email'
+          label='Your Email'
+          placeholder='Enter Your Email'
         />
         <InputControl
           isRequired
-          size="lg"
-          name="bookingPersonEmailConfirm"
-          type="email"
-          label="Confirm Email"
-          placeholder="Confirm Your Email"
+          size='lg'
+          name='bookingPersonEmailConfirm'
+          type='email'
+          label='Confirm Email'
+          placeholder='Confirm Your Email'
         />
         <Box>
           <FormControl
             isRequired
             isInvalid={!!cardError}
-            formLabel="Card Details"
+            formLabel='Card Details'
             errorMessage={cardError}
           >
-            <Box bg="white" p="2" borderRadius="4">
+            <Box bg='white' p='2' borderRadius='4'>
               <CardElement
                 options={cardOptions}
                 onChange={(e) => {
-                  setCardError(e.error?.message ?? "");
+                  setCardError(e.error?.message ?? '');
                 }}
               />
             </Box>
           </FormControl>
         </Box>
-        <CheckBoxControl colorScheme="red" name="bookingPersonAgree" size="lg">
-          Agree to the user agreement
+        <CheckBoxControl colorScheme='red' name='bookingPersonAgree' size='lg'>
+          <Button
+            onClick={onDisclaimerModalOpen}
+            variant='unstyled'
+            textDecoration='underline'
+          >
+            User agreement
+          </Button>
         </CheckBoxControl>
       </FormikStep>
     </FormikStepper>

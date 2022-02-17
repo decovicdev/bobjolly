@@ -10,6 +10,7 @@ import Layout from '../components/shared/Layout';
 import theme from '../config/theme';
 import stripe from '../config/stripe';
 import Loading from '../components/shared/Loading';
+import { ModalProvider } from '../context/ModalContext';
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
@@ -28,11 +29,13 @@ function MyApp({ Component, pageProps }: AppProps) {
         <Loading />
       ) : (
         <ChakraProvider theme={theme}>
-          <Elements stripe={stripe}>
-            <Layout>
-              <Component {...pageProps} />
-            </Layout>
-          </Elements>
+          <ModalProvider>
+            <Elements stripe={stripe}>
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
+            </Elements>
+          </ModalProvider>
         </ChakraProvider>
       )}
     </>

@@ -1,9 +1,8 @@
-import { Box, VStack } from '@chakra-ui/react';
 import { NextPage } from 'next';
 import Head from 'next/head';
 
 import Container from '../components/shared/Container';
-import { Body1, Title } from '../components/shared/typography';
+import { Body1, SubHeading } from '../components/shared/typography';
 
 const P: NextPage = (props) => {
   return (
@@ -11,7 +10,7 @@ const P: NextPage = (props) => {
       <Head>
         <title>Bobjolly | Privacy Policy</title>
       </Head>
-      <Title>Privacy Policy</Title>
+      <SubHeading>Privacy Policy</SubHeading>
       <Body1>
         Lorem Ipsum is simply dummy text of the printing and typesetting
         industry. Lorem Ipsum has been the industry's standard dummy text ever

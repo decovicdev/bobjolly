@@ -1,14 +1,14 @@
-import { NextPage } from "next";
-import { useState } from "react";
-import { Alert, AlertIcon, Box } from "@chakra-ui/react";
+import { NextPage } from 'next';
+import { useState } from 'react';
+import { Alert, AlertIcon, Box } from '@chakra-ui/react';
 
-import Container from "../components/shared/Container";
-import { Body1, Title } from "../components/shared/typography";
+import Container from '../components/shared/Container';
+import { Body1, Title } from '../components/shared/typography';
 import ContactForm, {
   FormValues,
   HandleSubmit,
-} from "../components/contact/ConntactForm";
-import Head from "next/head";
+} from '../components/ConntactForm';
+import Head from 'next/head';
 
 type Data = {
   status: string;
@@ -16,32 +16,32 @@ type Data = {
 };
 
 const Contact: NextPage = (props) => {
-  const [err, setErr] = useState("");
-  const [succ, setSucc] = useState("");
+  const [err, setErr] = useState('');
+  const [succ, setSucc] = useState('');
 
   const postData = async (values: FormValues): Promise<Data> => {
     const options: RequestInit = {
-      method: "POST",
-      mode: "cors",
+      method: 'POST',
+      mode: 'cors',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify(values),
     };
-    const response = await fetch("/api/send-msg", options);
+    const response = await fetch('/api/send-msg', options);
     return response.json();
   };
 
   const handleSubmit: HandleSubmit = (values, actions) => {
-    setErr("");
-    setSucc("");
+    setErr('');
+    setSucc('');
     postData(values)
       .then((data) => {
-        if (data.status === "succ") {
+        if (data.status === 'succ') {
           setSucc(data.message);
           actions.resetForm();
         }
-        if (data.status === "err") {
+        if (data.status === 'err') {
           setErr(data.message);
         }
       })
@@ -59,27 +59,27 @@ const Contact: NextPage = (props) => {
         <title>Bobjolly | Contact</title>
       </Head>
       <Box
-        maxW="500px"
-        fontWeight="bold"
+        maxW='500px'
+        fontWeight='bold'
         mx={{
-          base: "auto",
-          lg: "0",
+          base: 'auto',
+          lg: '0',
         }}
       >
         {err && (
-          <Alert status="error" mb={4}>
+          <Alert status='error' mb={4}>
             <AlertIcon />
             {err}
           </Alert>
         )}
         {succ && (
-          <Alert status="success" mb={4}>
+          <Alert status='success' mb={4}>
             <AlertIcon />
             {succ}
           </Alert>
         )}
-        <Title>Contact</Title>
-        <Body1>
+        <Title textAlign='left'>Contact</Title>
+        <Body1 textAlign='left' mb='8'>
           Facing any problem with your order? Or, just want to send me a
           message? <br />
           Whatever it is, I'm more than happy to help you. Just fill the form

@@ -4,7 +4,7 @@ import Container from '../shared/Container';
 import Image from '../shared/Image';
 import Stack from '../shared/Stack';
 import { Body1, SubHeading, Title } from '../shared/typography';
-import BookingForm, { HandleSubmit } from './BookingForm';
+import BookingForm, { HandleSubmit } from '../BookingForm';
 
 interface Section2Props {}
 
@@ -23,7 +23,7 @@ const Section2: React.FC<Section2Props> = (props) => {
             It's just $11.95. Delivery within 24 hours!
           </Title>
         </Box>
-        <Stack w='full' justify='space-between'>
+        <Stack w='full' justify='space-evenly'>
           <Box
             w='full'
             maxW='550px'

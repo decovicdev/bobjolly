@@ -27,6 +27,7 @@ const SubHeading = chakra(Text, {
 const Title = chakra(Text, {
   baseStyle: {
     fontSize: '20px',
+    fontWeight: '600',
   },
 });
 
