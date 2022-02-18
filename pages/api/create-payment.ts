@@ -2,7 +2,7 @@ const Stripe = require('stripe');
 
 import handler from '../../middlewares/handler';
 
-export default handler.post(async (req, res) => {
+export default handler().post(async (req, res) => {
   try {
     const stripe = new Stripe(process.env.STRIPE_SK!);
     const { client_secret } = await stripe.paymentIntents.create({

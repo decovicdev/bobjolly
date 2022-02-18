@@ -7,7 +7,7 @@ const mailgun = new Mailgun(formData);
 const DOMAIN = process.env.MAILGUN_DOMAIN_NAME!;
 const KEY = process.env.MAILGUN_API_KEY!;
 
-export default handler.post(async (req, res) => {
+export default handler().post(async (req, res) => {
   const { name, email, message } = req.body;
 
   const data = {
