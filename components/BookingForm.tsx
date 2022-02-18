@@ -98,53 +98,6 @@ const BookingForm: React.FC<BookingFormProps> = (props) => {
   const router = useRouter();
   const { onDisclaimerModalOpen } = useModalContext();
 
-  const handleSubmit: HandleSubmit = async (values, actions) => {
-    if (!stripe || !elements || cardError) {
-      return actions.setSubmitting(false);
-    }
-
-    const { error: backendError, clientSecret } = await fetch(
-      '/api/create-payment',
-      {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formatBooleanToString(values)),
-      }
-    ).then((r) => r.json());
-
-    if (backendError) {
-      setError(backendError.message);
-    } else {
-      const cardElement = elements.getElement(CardElement)!;
-      const { error } = await stripe.confirmCardPayment(clientSecret, {
-        payment_method: {
-          card: cardElement,
-          billing_details: {
-            name: values.bookingPersonName,
-            email: values.bookingPersonEmail,
-          },
-          metadata: formatBooleanToString(values),
-        },
-      });
-
-      if (error) {
-        setError(error?.message!);
-      } else {
-        router.push({
-          pathname: 'thankyou',
-          query: {
-            n: values.bookingPersonName,
-          },
-        });
-        actions.resetForm();
-        cardElement.clear();
-      }
-    }
-    actions.setSubmitting(false);
-  };
-
   useEffect(() => {
     if (error) {
       toast({
@@ -152,7 +105,59 @@ const BookingForm: React.FC<BookingFormProps> = (props) => {
         title: error,
       });
     }
-  }, [error, toast]);
+  }, [error]);
+
+  const handleSubmit: HandleSubmit = async (values, actions) => {
+    if (!stripe || !elements || cardError) {
+      return actions.setSubmitting(false);
+    }
+
+    try {
+      const { error: backendError, clientSecret } = await (
+        await fetch('/api/create-payment', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formatBooleanToString(values)),
+        })
+      ).json();
+
+      if (backendError) {
+        setError(backendError);
+      } else {
+        const cardElement = elements.getElement(CardElement)!;
+        const { error } = await stripe.confirmCardPayment(clientSecret, {
+          payment_method: {
+            card: cardElement,
+            billing_details: {
+              name: values.bookingPersonName,
+              email: values.bookingPersonEmail,
+            },
+            metadata: formatBooleanToString(values),
+          },
+        });
+
+        if (error) {
+          setError(error?.message!);
+        } else {
+          router.push({
+            pathname: 'thankyou',
+            query: {
+              n: values.bookingPersonName,
+            },
+          });
+          actions.resetForm();
+          cardElement.clear();
+        }
+      }
+    } catch (error: any) {
+      console.log('here');
+      setError(error?.message);
+    } finally {
+      actions.setSubmitting(false);
+    }
+  };
 
   return (
     <FormikStepper initialValues={initialValues} onSubmit={handleSubmit}>

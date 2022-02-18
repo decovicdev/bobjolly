@@ -10,14 +10,12 @@ import TextareaControl from './shared/input/TextareaControl';
 const formSchema = object({
   name: string().required(),
   email: string().email().required(),
-  phone: string().required(),
   message: string().required(),
 });
 
 const initialValues = {
   name: '',
   email: '',
-  phone: '',
   message: '',
 };
 
@@ -61,17 +59,6 @@ const ContactForm: React.FC<ContactFormProps> = ({ handleSubmit }) => {
               label='Email'
               placeholder='Enter email'
               leftIcon={<Image src='/images/envelope.png' alt='user' />}
-            />
-
-            <InputControl
-              labelColor='black'
-              isRequired
-              size='lg'
-              name='phone'
-              type='number'
-              leftIcon={<Image src='/images/phone.png' alt='user' />}
-              label='Phone number'
-              placeholder='Enter phone number'
             />
 
             <TextareaControl

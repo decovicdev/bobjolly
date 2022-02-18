@@ -43,6 +43,7 @@ const GenderControl: React.FC<GenderControlProps> = (props) => {
         <FormLabel>Gender</FormLabel>
         <Title>{value}</Title>
         <Button
+          aria-label='gender selection'
           variant='unstyled'
           w='60px'
           h='60px'

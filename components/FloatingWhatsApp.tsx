@@ -4,9 +4,9 @@ import FloatingWhatsAppButton from 'react-floating-whatsapp';
 const FloatingWhatsApp: React.FC = (props) => {
   return (
     <FloatingWhatsAppButton
-      phoneNumber={'+8615679136891'}
+      phoneNumber={'+18053573732'}
       accountName={'Bobjolly'}
-      avatar='/images/gift-img.png'
+      avatar='/images/06.png'
     />
   );
 };
