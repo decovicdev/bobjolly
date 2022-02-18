@@ -15,8 +15,8 @@ export default handler().post(async (req, res) => {
 
   const data = {
     from: `Mailgun Sandbox <postmaster@${DOMAIN}>`,
-    // to: 'support@bobjolly.com',
-    to: 'ahmed_abdikani@hotmail.com',
+    to: 'support@bobjolly.com',
+    // to: 'ahmed_abdikani@hotmail.com',
     subject: 'Contact Form Submit Data',
     text: `
     Name: ${name} 
