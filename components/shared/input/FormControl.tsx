@@ -8,16 +8,24 @@ import FormErrorMessage from './FormErrorMessage';
 export interface FormControlProps extends ChakraFormControlProps {
   formLabel?: string;
   htmlFor?: string;
+  labelColor?: string;
   errorMessage?: string;
 }
 
 const FormControl: React.FC<FormControlProps> = (props) => {
-  const { formLabel, htmlFor, children, isInvalid, errorMessage, ...rest } =
-    props;
+  const {
+    formLabel,
+    htmlFor,
+    labelColor,
+    children,
+    isInvalid,
+    errorMessage,
+    ...rest
+  } = props;
 
   return (
     <ChakraFormControl isInvalid={isInvalid} {...rest}>
-      <FormLabel htmlFor={htmlFor} color='white'>
+      <FormLabel htmlFor={htmlFor} color={labelColor || 'white'}>
         {formLabel}
       </FormLabel>
       {children}
