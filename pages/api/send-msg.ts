@@ -32,7 +32,6 @@ export default handler().post(async (req, res) => {
       message: 'Message sent successfully',
     });
   } catch (error) {
-    console.log(error);
     res.status(500).json({
       error: 'Something went wrong, please try again later',
     });

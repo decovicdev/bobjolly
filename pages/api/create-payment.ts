@@ -18,7 +18,6 @@ export default handler().post(async (req, res) => {
       clientSecret: client_secret,
     });
   } catch (err: any) {
-    console.log(err);
     res.status(500).json({
       error: 'Something went wrong, please try again later',
     });
