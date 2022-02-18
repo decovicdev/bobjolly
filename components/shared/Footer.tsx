@@ -1,11 +1,11 @@
 import React from 'react';
-import { Box, HStack, Link } from '@chakra-ui/react';
-import NextLink from 'next/link';
+import { HStack } from '@chakra-ui/react';
 
 import Container from './Container';
 import Image from './Image';
 import { Body1 } from './typography';
 import Stack from './Stack';
+import Link from './Link';
 
 interface FooterProps {}
 
@@ -15,11 +15,9 @@ const Footer: React.FC<FooterProps> = (props) => {
       <Stack justify='space-between'>
         <Body1 color='gray'>
           Copyright © 2022 Bob Jolly. All rights reserved.
-          <NextLink href='/privacy-policy'>
-            <Link ml='2' textDecorationLine='underline'>
-              Privacy Policy
-            </Link>
-          </NextLink>
+          <Link ml='2' href='/privacy-policy' textDecorationLine='underline'>
+            Privacy Policy
+          </Link>
         </Body1>
         <HStack color='gray.400'>
           <Link

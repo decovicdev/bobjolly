@@ -1,14 +1,13 @@
 import React from 'react';
 import { Box } from '@chakra-ui/react';
-// import Carousel from 'nuka-carousel';
-
-const Carousel = dynamic(() => import('nuka-carousel'), { ssr: false });
+import dynamic from 'next/dynamic';
 
 import Container from '../shared/Container';
 import { Body1 } from '../shared/typography';
 import Image from '../shared/Image';
 import Stack from '../shared/Stack';
-import dynamic from 'next/dynamic';
+
+const Carousel = dynamic(() => import('nuka-carousel'), { ssr: false });
 
 const testimonials = [
   {

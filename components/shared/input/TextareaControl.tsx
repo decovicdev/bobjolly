@@ -12,16 +12,18 @@ interface TextareaControlProps extends TextareaProps {
   name: string;
   label?: string;
   isRequired?: boolean;
+  labelColor?: string;
   leftIcon?: React.ReactNode;
 }
 
 const TextareaControl: React.FC<TextareaControlProps> = (props) => {
-  const { leftIcon, name, label, isRequired, ...rest } = props;
+  const { leftIcon, name, label, labelColor, isRequired, ...rest } = props;
   const [field, meta] = useField(name);
 
   return (
     <FormControl
       formLabel={label}
+      labelColor={labelColor}
       htmlFor={name}
       errorMessage={meta.error}
       isInvalid={!!meta.touched && !!meta.error}

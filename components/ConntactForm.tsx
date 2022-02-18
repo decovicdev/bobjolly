@@ -1,11 +1,11 @@
 import { Formik, FormikHelpers, Form as FormikForm } from 'formik';
 import React from 'react';
 import { object, string } from 'yup';
-import ButtonPrimary from '../shared/button/ButtonPrimary';
+import ButtonPrimary from './shared/button/ButtonPrimary';
 
-import Image from '../shared/Image';
-import InputControl from '../shared/input/InputControl';
-import TextareaControl from '../shared/input/TextareaControl';
+import Image from './shared/Image';
+import InputControl from './shared/input/InputControl';
+import TextareaControl from './shared/input/TextareaControl';
 
 const formSchema = object({
   name: string().required(),
@@ -43,6 +43,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ handleSubmit }) => {
         return (
           <FormikForm noValidate>
             <InputControl
+              labelColor='black'
               isRequired
               leftIcon={
                 <Image boxSize='24px' src='/images/user.png' alt='user' />
@@ -53,6 +54,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ handleSubmit }) => {
               placeholder='Enter name'
             />
             <InputControl
+              labelColor='black'
               isRequired
               size='lg'
               name='email'
@@ -62,6 +64,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ handleSubmit }) => {
             />
 
             <InputControl
+              labelColor='black'
               isRequired
               size='lg'
               name='phone'
@@ -72,6 +75,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ handleSubmit }) => {
             />
 
             <TextareaControl
+              labelColor='black'
               isRequired
               name='message'
               label='Message'

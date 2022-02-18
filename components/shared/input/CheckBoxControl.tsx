@@ -11,10 +11,12 @@ interface CheckBoxControlProps extends CheckboxProps {
 
 const CheckBoxControl: React.FC<CheckBoxControlProps> = (props) => {
   const { name, label, isRequired, ...rest } = props;
-  const [field, meta] = useField({
-    name,
-    type: 'checkbox',
-  });
+  const [field, meta] = useField(name);
+
+  if (name === 'bdPersonMentionAge') {
+    console.log(field);
+  }
+
   return (
     <FormControl
       formLabel={label}
@@ -23,7 +25,7 @@ const CheckBoxControl: React.FC<CheckBoxControlProps> = (props) => {
       isInvalid={!!meta.touched && !!meta.error}
       isRequired={isRequired}
     >
-      <Checkbox {...field} {...rest} color='white' />
+      <Checkbox {...rest} isChecked={field.value} {...field} color='white' />
     </FormControl>
   );
 };

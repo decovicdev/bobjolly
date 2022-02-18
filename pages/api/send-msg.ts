@@ -1,30 +1,34 @@
-import type { NextApiRequest, NextApiResponse } from 'next';
-import Mailgun from 'mailgun-js';
+import Mailgun from 'mailgun.js';
+import formData from 'form-data';
 
-const DOMAIN = process.env.MAILGUN_DOMAIN_NAME;
+import handler from '../../middlewares/handler';
 
-type Data = {
-  status: string;
-  message: string;
-};
+const mailgun = new Mailgun(formData);
+const DOMAIN = process.env.MAILGUN_DOMAIN_NAME!;
+const KEY = process.env.MAILGUN_API_KEY!;
 
-const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
-  const { name, email, phone, msg } = req.body;
+export default handler.post(async (req, res) => {
+  const { name, email, phone, message } = req.body;
 
   const data = {
     from: `Mailgun Sandbox <postmaster@${DOMAIN}>`,
     to: 'support@bobjolly.com',
     subject: 'Contact Form Submit Data',
-    text: `Name: ${name}\nSender Email: ${email}\nSender Phone: ${phone}\nSender Message: ${msg}`,
+    text: `
+    Name: ${name} 
+    Sender Email: ${email}
+    Sender Phone: ${phone}
+    Sender Message: ${message}`,
   };
 
   try {
-    const mailgun = new Mailgun({
-      apiKey: process.env.MAILGUN_API_KEY!,
-      domain: DOMAIN!,
+    const client = mailgun.client({
+      username: 'api',
+      key: KEY,
     });
 
-    await mailgun.messages().send(data);
+    await client.messages.create(DOMAIN, data);
+
     res.json({
       status: 'succ',
       message: 'Message has been successfully sent',
@@ -35,6 +39,4 @@ const handler = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
       message: 'Sorry something went wrong, try again later',
     });
   }
-};
-
-export default handler;
+});

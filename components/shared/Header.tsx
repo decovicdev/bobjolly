@@ -1,14 +1,13 @@
-import React from "react";
-import { Link, Wrap, WrapItem } from "@chakra-ui/react";
-import { useRouter } from "next/router";
-import NextLink from "next/link";
+import React from 'react';
+import { Wrap, WrapItem } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 
-import Image from "./Image";
-import Container from "./Container";
-import { Title } from "./typography";
-import ButtonOutline from "./button/ButtonOutline";
-import Stack from "./Stack";
-import Logo from "./Logo";
+import Container from './Container';
+import { Title } from './typography';
+import ButtonOutline from './button/ButtonOutline';
+import Stack from './Stack';
+import Logo from './Logo';
+import Link from './Link';
 
 interface HeaderProps {}
 
@@ -18,29 +17,28 @@ const Header: React.FC<HeaderProps> = (props) => {
   return (
     <Container>
       <nav>
-        <Stack py="8" justify="space-between">
-          <NextLink href="/">
-            <Link>
-              <Logo />
-            </Link>
-          </NextLink>
-          <Stack spacing="8" alignItems="center">
+        <Stack py='8' justify='space-between'>
+          <Link href='/'>
+            <Logo />
+          </Link>
+
+          <Stack spacing='8' alignItems='center'>
             <Title
               color={{
-                base: "black",
-                lg: "white",
+                base: 'black',
+                lg: 'white',
               }}
             >
               Personalized Whacky Birthday Music Videos
             </Title>
-            <Wrap justify="center" spacing="4">
+            <Wrap justify='center' spacing='4'>
               <WrapItem>
-                <ButtonOutline onClick={() => router.push("/#booknow")}>
+                <ButtonOutline onClick={() => router.push('/#booknow')}>
                   Book Now
                 </ButtonOutline>
               </WrapItem>
               <WrapItem>
-                <ButtonOutline onClick={() => router.push("/contact")}>
+                <ButtonOutline onClick={() => router.push('/contact')}>
                   Contact
                 </ButtonOutline>
               </WrapItem>
