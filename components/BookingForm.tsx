@@ -3,10 +3,10 @@ import { CardElement, useElements, useStripe } from '@stripe/react-stripe-js';
 import { FormikHelpers } from 'formik';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
-import { boolean, number, object, ref, string } from 'yup';
+
 import { useModalContext } from '../hooks/useContext';
 import formatBooleanToString from '../utils/formatBooleanToString';
-
+import { bdPersonSchema, bookingPersonSchema } from '../validation';
 import { FormikStep, FormikStepper } from './shared/FormikStepper';
 import CheckBoxControl from './shared/input/CheckBoxControl';
 import FormControl from './shared/input/FormControl';
@@ -25,27 +25,6 @@ const qualityOptions = [
   'Optimistic',
 ];
 const genderOption = ['He', 'She'];
-
-const bdPersonSchema = object({
-  bdPersonName: string().required('Birthday Person Name is required'),
-  bdPersonGender: string().oneOf(genderOption).required(),
-  bdPersonAge: number().required('Birthday Person Age is required'),
-  bdPersonQuality: string().oneOf(qualityOptions).required(),
-  bdPersonMentionAge: boolean().required(),
-});
-
-const bookingPersonSchema = object({
-  bookingPersonName: string().required('Name is required'),
-  bookingPersonEmail: string()
-    .email('Email is not a valid email')
-    .required('Email is required'),
-  bookingPersonEmailConfirm: string()
-    .oneOf([ref('bookingPersonEmail'), null], "Emails don't match")
-    .required('Email confirmation is required'),
-  bookingPersonAgree: boolean()
-    .is([true], 'Please check user agreement')
-    .required(),
-});
 
 const initialValues = {
   bdPersonName: '',

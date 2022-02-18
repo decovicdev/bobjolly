@@ -1,17 +1,11 @@
 import { Formik, FormikHelpers, Form as FormikForm } from 'formik';
 import React from 'react';
-import { object, string } from 'yup';
+import { contactSchema } from '../validation';
 import ButtonPrimary from './shared/button/ButtonPrimary';
 
 import Image from './shared/Image';
 import InputControl from './shared/input/InputControl';
 import TextareaControl from './shared/input/TextareaControl';
-
-const formSchema = object({
-  name: string().required(),
-  email: string().email().required(),
-  message: string().required(),
-});
 
 const initialValues = {
   name: '',
@@ -34,7 +28,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ handleSubmit }) => {
   return (
     <Formik
       initialValues={initialValues}
-      validationSchema={formSchema}
+      validationSchema={contactSchema}
       onSubmit={handleSubmit}
     >
       {({ isSubmitting }) => {
