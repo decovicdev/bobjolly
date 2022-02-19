@@ -11,16 +11,11 @@ import ContactForm, {
 import Head from 'next/head';
 import FloatingWhatsApp from '../components/FloatingWhatsApp';
 
-type Data = {
-  status: string;
-  message: string;
-};
-
 const Contact: NextPage = (props) => {
   const [err, setErr] = useState('');
   const [succ, setSucc] = useState('');
 
-  const postData = async (values: FormValues): Promise<Data> => {
+  const postData = async (values: FormValues) => {
     const options: RequestInit = {
       method: 'POST',
       mode: 'cors',
@@ -33,25 +28,22 @@ const Contact: NextPage = (props) => {
     return response.json();
   };
 
-  const handleSubmit: HandleSubmit = (values, actions) => {
+  const handleSubmit: HandleSubmit = async (values, actions) => {
     setErr('');
     setSucc('');
-    postData(values)
-      .then((data) => {
-        if (data.status === 'succ') {
-          setSucc(data.message);
-          // actions.resetForm();
-        }
-        if (data.status === 'err') {
-          setErr(data.message);
-        }
-      })
-      .catch((err: any) => {
-        setErr(err.message);
-      })
-      .finally(() => {
-        actions.setSubmitting(false);
-      });
+    try {
+      const { error: backendError, message } = await postData(values);
+      if (backendError) {
+        setErr(backendError);
+      } else {
+        setSucc(message);
+        actions.resetForm();
+      }
+    } catch (error: any) {
+      setErr(error.message);
+    } finally {
+      actions.setSubmitting(false);
+    }
   };
 
   return (

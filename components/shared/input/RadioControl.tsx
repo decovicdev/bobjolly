@@ -1,12 +1,4 @@
-import {
-  Radio,
-  RadioProps,
-  RadioGroup,
-  VStack,
-  RadioGroupProps,
-  Wrap,
-  WrapItem,
-} from '@chakra-ui/react';
+import { Radio, RadioGroup, RadioGroupProps } from '@chakra-ui/react';
 import { useField } from 'formik';
 import React from 'react';
 import FormControl from './FormControl';
@@ -30,26 +22,28 @@ const RadioControl: React.FC<RadioControlProps> = (props) => {
       isInvalid={!!meta.touched && !!meta.error}
       isRequired={props.isRequired}
     >
-      <RadioGroup {...rest} {...field} type='radio' color='white'>
-        <Wrap align='center' justify='space-between'>
-          {options.map((option) => (
-            <WrapItem
-              flexBasis={{
-                base: '100%',
-                md: '45%',
-              }}
-              key={option.value}
-            >
-              <Radio
-                type='radio'
-                onChange={field.onChange}
-                value={option.value}
-              >
-                {option.label}
-              </Radio>
-            </WrapItem>
-          ))}
-        </Wrap>
+      <RadioGroup
+        {...rest}
+        {...field}
+        color='white'
+        d='flex'
+        flexWrap='wrap'
+        justifyContent='space-between'
+        alignItems='center'
+      >
+        {options.map((option) => (
+          <Radio
+            flexBasis={{
+              base: '100%',
+              md: '45%',
+            }}
+            key={option.value}
+            onChange={field.onChange}
+            value={option.value}
+          >
+            {option.label}
+          </Radio>
+        ))}
       </RadioGroup>
     </FormControl>
   );
