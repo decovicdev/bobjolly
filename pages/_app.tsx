@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Elements } from "@stripe/react-stripe-js";
