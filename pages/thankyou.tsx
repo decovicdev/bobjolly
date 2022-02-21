@@ -1,6 +1,7 @@
 import { Heading, VStack } from "@chakra-ui/react";
 import { NextPage } from "next";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import ReactConfetti from "react-confetti";
 
 import ButtonPrimary from "../components/shared/button/ButtonPrimary";
@@ -10,6 +11,14 @@ import useScreenSize from "../hooks/useScreenSize";
 interface ThankyouProps {}
 
 const Thankyou: NextPage<ThankyouProps> = (props) => {
+  useEffect(() => {
+    import("react-facebook-pixel")
+      .then((x) => x.default)
+      .then((ReactPixel) => {
+        ReactPixel.track("Purchase", { value: 11.95, currency: "USD" });
+      });
+  }, []);
+
   const router = useRouter();
   const { n } = router.query;
 
