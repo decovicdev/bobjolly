@@ -15,7 +15,6 @@ import { ModalProvider } from "../context/ModalContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
-  const router = useRouter();
 
   return (
     <>
