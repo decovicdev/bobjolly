@@ -1,6 +1,6 @@
 import "../styles/globals.css";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import type { AppProps } from "next/app";
 import { ChakraProvider } from "@chakra-ui/react";
 import { Elements } from "@stripe/react-stripe-js";
@@ -15,6 +15,9 @@ import { ModalProvider } from "../context/ModalContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
+  useEffect(() => {
+    setIsLoading(false);
+  }, []);
 
   return (
     <>
