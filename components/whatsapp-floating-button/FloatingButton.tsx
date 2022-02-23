@@ -1,24 +1,24 @@
-import { Button, Circle } from '@chakra-ui/react';
-import { motion } from 'framer-motion';
-import React from 'react';
-import { WhatsappIcon } from './Icons';
+import { Button, Circle } from "@chakra-ui/react";
+import { motion } from "framer-motion";
+import React from "react";
+import { WhatsappIcon } from "./Icons";
 
 const variants = {
   animate: {
-    boxShadow: '0 0 0 15px #25d366',
-    opacity: 0
+    boxShadow: "0 0 0 15px #25d366",
+    opacity: 0,
   },
   initial: {
-    boxShadow: ' 0 0 0 0 #25d366',
-    opacity: 1
-  }
+    boxShadow: " 0 0 0 0 #25d366",
+    opacity: 1,
+  },
 };
 
 const style = {
   width: 60,
   height: 60,
-  borderRadius: '50%',
-  position: 'absolute'
+  borderRadius: "50%",
+  position: "absolute",
 } as const;
 
 const transition = {
@@ -26,7 +26,7 @@ const transition = {
   ease: [0.4, 0, 0.2, 1],
   loop: Infinity,
   repeatDelay: 0.5,
-  repeatType: 'loop'
+  repeatType: "loop",
 } as const;
 
 interface FloatingButtonProps {
@@ -37,10 +37,11 @@ const FloatingButton: React.FC<FloatingButtonProps> = (props) => {
   const { handleToggle } = props;
   return (
     <Button
+      aria-label="Whatsapp Floating Button"
       variant="unstyled"
       outline="none"
       _focus={{
-        outline: 'none'
+        outline: "none",
       }}
       pos="absolute"
       bottom={12}
@@ -57,9 +58,9 @@ const FloatingButton: React.FC<FloatingButtonProps> = (props) => {
       <Circle
         size="60px"
         bg="#25D366"
-        display={'flex'}
-        justifyContent={'center'}
-        alignItems={'center'}
+        display={"flex"}
+        justifyContent={"center"}
+        alignItems={"center"}
         p=".5rem"
         boxShadow="rgb(0 0 0 / 15%) 0px 4px 12px 0px"
       >
