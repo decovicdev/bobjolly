@@ -54,7 +54,6 @@ const Hero: React.FC<HeroProps> = (props) => {
             overflow="hidden"
           >
             <iframe
-              loading="lazy"
               width="100%"
               height="100%"
               src="https://www.youtube.com/embed/1Wwu1nD4uzs?rel=0"

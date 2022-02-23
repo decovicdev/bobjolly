@@ -25,7 +25,6 @@
     "react": "17.0.2",
     "react-confetti": "^6.0.1",
     "react-dom": "17.0.2",
-    "react-floating-whatsapp": "^4.0.5",
     "react-facebook-pixel": "^1.0.4",
     "react-router-dom": "^6.2.1",
     "stripe": "^8.197.0",
