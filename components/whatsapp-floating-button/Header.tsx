@@ -12,10 +12,11 @@ import React from "react";
 export interface HeaderProps {
   handleClose: () => void;
   avatar: string;
+  name: string;
 }
 
 const Header: React.FC<HeaderProps> = (props) => {
-  const { handleClose, avatar } = props;
+  const { handleClose, avatar, name } = props;
 
   return (
     <HStack
@@ -33,7 +34,7 @@ const Header: React.FC<HeaderProps> = (props) => {
 
         <VStack align="flex-start" spacing="0">
           <Heading as="h1" size="sm">
-            WhatsApp
+            {name}
           </Heading>
           <Text fontSize="xs">Typically replies within 1 hour</Text>
         </VStack>

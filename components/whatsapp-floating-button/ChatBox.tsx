@@ -74,7 +74,7 @@ const ChatBox: React.FC<ChatBoxProps> = (props) => {
             boxShadow="lg"
             spacing={0}
           >
-            <Header avatar={avatar} handleClose={handleClose} />
+            <Header avatar={avatar} name={name} handleClose={handleClose} />
             <Box
               bgColor="#e5ddd5"
               bgImage="url('/images/whatsapp-bg.png')"
