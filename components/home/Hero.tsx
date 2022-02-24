@@ -58,7 +58,7 @@ const Hero: React.FC<HeroProps> = (props) => {
           >
             <Suspense
               fallback={
-                <Image loading="eager" src="/images/iframe-facade.png" />
+                <Image loading="eager" src="/images/iframe-facade-min.png" />
               }
             >
               <HeroIframe />
