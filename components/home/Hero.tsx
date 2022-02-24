@@ -1,15 +1,15 @@
 import { Box, VStack } from "@chakra-ui/react";
+import dynamic from "next/dynamic";
 import { useRouter } from "next/router";
 import React, { lazy, Suspense } from "react";
 
 import { useModalContext } from "../../hooks/useContext";
 import ButtonPrimary from "../shared/button/ButtonPrimary";
 import Container from "../shared/Container";
-import Image from "../shared/Image";
 import Stack from "../shared/Stack";
 import { Heading, SubHeading } from "../shared/typography";
 
-const HeroIframe = lazy(() => import("../shared/iframe/HeroIframe"));
+const HeroIframe = dynamic(() => import("../shared/iframe/HeroIframe"));
 
 interface HeroProps {}
 
@@ -56,18 +56,7 @@ const Hero: React.FC<HeroProps> = (props) => {
             h="340px"
             overflow="hidden"
           >
-            <Suspense
-              fallback={
-                <Image
-                  loading="eager"
-                  h={340}
-                  w={["100%", "510px", "510px"]}
-                  src="/images/iframe-facade-min.png"
-                />
-              }
-            >
-              <HeroIframe />
-            </Suspense>
+            <HeroIframe />
           </Box>
         </Stack>
       </Container>
