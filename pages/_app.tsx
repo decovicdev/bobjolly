@@ -10,35 +10,34 @@ import { useRouter } from "next/router";
 import Layout from "../components/shared/Layout";
 import theme from "../config/theme";
 import stripe from "../config/stripe";
-import Loading from "../components/shared/Loading";
+// import Loading from "../components/shared/Loading";
 import { ModalProvider } from "../context/ModalContext";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const [isLoading, setIsLoading] = useState(true);
-  useEffect(() => {
-    setIsLoading(false);
-  }, []);
-
+  // useEffect(() => {
+  //   setIsLoading(false);
+  // }, []);
+  // {isLoading ? (
+  //   <Loading />
+  // ) :
   return (
     <>
       <Head>
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Bobjolly</title>
       </Head>
-
-      {isLoading ? (
-        <Loading />
-      ) : (
-        <ChakraProvider theme={theme}>
-          <ModalProvider>
-            <Layout>
-              <Elements stripe={stripe}>
-                <Component {...pageProps} />
-              </Elements>
-            </Layout>
-          </ModalProvider>
-        </ChakraProvider>
-      )}
+      (
+      <ChakraProvider theme={theme}>
+        <ModalProvider>
+          <Layout>
+            <Elements stripe={stripe}>
+              <Component {...pageProps} />
+            </Elements>
+          </Layout>
+        </ModalProvider>
+      </ChakraProvider>
+      )
     </>
   );
 }
