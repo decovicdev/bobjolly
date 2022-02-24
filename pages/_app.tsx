@@ -27,7 +27,6 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title>Bobjolly</title>
       </Head>
-      (
       <ChakraProvider theme={theme}>
         <ModalProvider>
           <Layout>
@@ -37,7 +36,6 @@ function MyApp({ Component, pageProps }: AppProps) {
           </Layout>
         </ModalProvider>
       </ChakraProvider>
-      )
     </>
   );
 }
