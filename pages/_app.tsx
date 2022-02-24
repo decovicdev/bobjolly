@@ -31,11 +31,11 @@ function MyApp({ Component, pageProps }: AppProps) {
       ) : (
         <ChakraProvider theme={theme}>
           <ModalProvider>
-            <Elements stripe={stripe}>
-              <Layout>
+            <Layout>
+              <Elements stripe={stripe}>
                 <Component {...pageProps} />
-              </Layout>
-            </Elements>
+              </Elements>
+            </Layout>
           </ModalProvider>
         </ChakraProvider>
       )}

@@ -1,12 +1,15 @@
 import { Box, VStack } from "@chakra-ui/react";
 import { useRouter } from "next/router";
-import React from "react";
-import { useModalContext } from "../../hooks/useContext";
+import React, { lazy, Suspense } from "react";
 
+import { useModalContext } from "../../hooks/useContext";
 import ButtonPrimary from "../shared/button/ButtonPrimary";
 import Container from "../shared/Container";
+import Image from "../shared/Image";
 import Stack from "../shared/Stack";
 import { Heading, SubHeading } from "../shared/typography";
+
+const HeroIframe = lazy(() => import("../shared/iframe/HeroIframe"));
 
 interface HeroProps {}
 
@@ -53,15 +56,13 @@ const Hero: React.FC<HeroProps> = (props) => {
             h="340px"
             overflow="hidden"
           >
-            <iframe
-              width="100%"
-              height="100%"
-              src="https://www.youtube.com/embed/1Wwu1nD4uzs?rel=0"
-              title="YouTube video player"
-              frameBorder="0"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen={false}
-            />
+            <Suspense
+              fallback={
+                <Image loading="eager" src="/images/iframe-facade.png" />
+              }
+            >
+              <HeroIframe />
+            </Suspense>
           </Box>
         </Stack>
       </Container>
