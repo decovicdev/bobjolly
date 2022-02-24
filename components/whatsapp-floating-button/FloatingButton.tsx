@@ -24,7 +24,7 @@ const style = {
 const transition = {
   duration: 1.2,
   ease: [0.4, 0, 0.2, 1],
-  loop: Infinity,
+  repeat: Infinity,
   repeatDelay: 0.5,
   repeatType: "loop",
 } as const;
